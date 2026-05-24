@@ -1391,6 +1391,81 @@
   </section>
 
 
+<!-- ============================================================
+       SECCIÓN 7 slide investigación
+  ============================================================ -->
+  <div class="divider"></div>
+ <div class="divider"></div>
+<section id="presentacion">
+  <div class="section-inner">
+    <p class="section-label">07 · Presentación</p>
+    <h2>Arquitectura del Proyecto</h2>
+
+    <div style="position:relative; background:var(--card); border:1px solid var(--border); border-radius:28px; overflow:hidden; margin-top:40px;">
+
+      <!-- Slides -->
+      <div id="slideshow" style="position:relative; width:100%; aspect-ratio:16/9;">
+        <img id="slide-img" src="Smart_Pocket_Financial_Architecture.png" alt="Slide 1"
+             style="width:100%; height:100%; object-fit:contain; display:block;" />
+      </div>
+
+      <!-- Controles -->
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 24px; border-top:1px solid var(--border);">
+        <button onclick="changeSlide(-1)"
+                style="background:var(--card); border:1px solid var(--border); color:var(--text); padding:8px 20px; border-radius:999px; cursor:pointer; font-family:var(--font-body); font-size:0.9rem; transition:all 0.2s;"
+                onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+          ← Anterior
+        </button>
+
+        <span id="slide-counter" style="font-size:0.85rem; color:var(--muted);">1 / 12</span>
+
+        <button onclick="changeSlide(1)"
+                style="background:var(--card); border:1px solid var(--border); color:var(--text); padding:8px 20px; border-radius:999px; cursor:pointer; font-family:var(--font-body); font-size:0.9rem; transition:all 0.2s;"
+                onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+          Siguiente →
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+  // SLIDESHOW
+const slides = [
+  'Smart_Pocket_Financial_Architecture.png',
+  'Smart_Pocket_Financial_Architecture (1).png',
+  'Smart_Pocket_Financial_Architecture (2).png',
+  'Smart_Pocket_Financial_Architecture (3).png',
+  'Smart_Pocket_Financial_Architecture (4).png',
+  'Smart_Pocket_Financial_Architecture (5).png',
+  'Smart_Pocket_Financial_Architecture (6).png',
+  'Smart_Pocket_Financial_Architecture (7).png',
+  'Smart_Pocket_Financial_Architecture (8).png',
+  'Smart_Pocket_Financial_Architecture (9).png',
+  'Smart_Pocket_Financial_Architecture (10).png',
+  'Smart_Pocket_Financial_Architecture (11).png',
+];
+
+let currentSlide = 0;
+
+function changeSlide(dir) {
+  currentSlide = (currentSlide + dir + slides.length) % slides.length;
+  document.getElementById('slide-img').src = slides[currentSlide];
+  document.getElementById('slide-counter').textContent = (currentSlide + 1) + ' / ' + slides.length;
+}
+
+// Swipe en móvil
+let touchStartX = 0;
+document.getElementById('slideshow').addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.getElementById('slideshow').addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+});
+    </div>
+  </section>
+
+
+
+  
   <!-- ============================================================
        FOOTER
   ============================================================ -->
