@@ -1435,7 +1435,7 @@
     // ------------------------------------------------------------
     // LIGHT / DARK MODE
     // ------------------------------------------------------------
-    let isDark = true;
+    let isDark = false;
 
     function toggleTheme() {
       isDark = !isDark;
@@ -1563,7 +1563,7 @@
       }
     };
 
-    let currentLang = 'es';
+    let currentLang = 'en';
 
     function t(key) {
       return translations[currentLang][key] || translations['es'][key] || key;
