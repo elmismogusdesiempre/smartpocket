@@ -738,6 +738,35 @@
     </div>
   </section>
 
+ <!-- SECCIÓN 7 -->
+  <div class="divider"></div>
+  <section id="presentacion">
+    <div class="section-inner">
+      <p class="section-label" id="sec07-label">07 · Presentation</p>
+      <h2 id="sec07-h2">Project Architecture</h2>
+
+      <div style="position:relative; background:var(--card); border:1px solid var(--border); border-radius:28px; overflow:hidden; margin-top:40px;">
+        <div id="slideshow" style="position:relative; width:100%; aspect-ratio:16/9;">
+          <img id="slide-img" src="Smart_Pocket_Financial_Architecture.png" alt="Slide 1"
+               style="width:100%; height:100%; object-fit:contain; display:block;" />
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 24px; border-top:1px solid var(--border);">
+          <button onclick="changeSlide(-1)" id="btn-prev"
+                  style="background:var(--card); border:1px solid var(--border); color:var(--text); padding:8px 20px; border-radius:999px; cursor:pointer; font-family:var(--font-body); font-size:0.9rem; transition:all 0.2s;"
+                  onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            ← Previous
+          </button>
+          <span id="slide-counter" style="font-size:0.85rem; color:var(--muted);">1 / 12</span>
+          <button onclick="changeSlide(1)" id="btn-next"
+                  style="background:var(--card); border:1px solid var(--border); color:var(--text); padding:8px 20px; border-radius:999px; cursor:pointer; font-family:var(--font-body); font-size:0.9rem; transition:all 0.2s;"
+                  onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            Next →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <!-- SECCIÓN 6 -->
   <div class="divider"></div>
   <section id="fuentes">
@@ -774,34 +803,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN 7 -->
-  <div class="divider"></div>
-  <section id="presentacion">
-    <div class="section-inner">
-      <p class="section-label" id="sec07-label">07 · Presentation</p>
-      <h2 id="sec07-h2">Project Architecture</h2>
-
-      <div style="position:relative; background:var(--card); border:1px solid var(--border); border-radius:28px; overflow:hidden; margin-top:40px;">
-        <div id="slideshow" style="position:relative; width:100%; aspect-ratio:16/9;">
-          <img id="slide-img" src="Smart_Pocket_Financial_Architecture.png" alt="Slide 1"
-               style="width:100%; height:100%; object-fit:contain; display:block;" />
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 24px; border-top:1px solid var(--border);">
-          <button onclick="changeSlide(-1)" id="btn-prev"
-                  style="background:var(--card); border:1px solid var(--border); color:var(--text); padding:8px 20px; border-radius:999px; cursor:pointer; font-family:var(--font-body); font-size:0.9rem; transition:all 0.2s;"
-                  onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            ← Previous
-          </button>
-          <span id="slide-counter" style="font-size:0.85rem; color:var(--muted);">1 / 12</span>
-          <button onclick="changeSlide(1)" id="btn-next"
-                  style="background:var(--card); border:1px solid var(--border); color:var(--text); padding:8px 20px; border-radius:999px; cursor:pointer; font-family:var(--font-body); font-size:0.9rem; transition:all 0.2s;"
-                  onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            Next →
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
+ 
 
   <!-- FOOTER -->
   <footer>
