@@ -793,14 +793,35 @@
     ">
 
       <!-- SLIDESHOW -->
-      <div id="slideshow"
-           style="
-             position:relative;
-             width:100%;
-             aspect-ratio:16/9;
-             background:black;
-           ">
-      </div>
+     <div id="slideshow"
+     style="
+       position:relative;
+       width:100%;
+       aspect-ratio:16/9;
+       background:black;
+     ">
+
+  <!-- IMAGEN -->
+  <img id="slide-image"
+       style="
+         width:100%;
+         height:100%;
+         object-fit:contain;
+         display:block;
+       ">
+
+  <!-- VIDEO -->
+  <iframe id="slide-video"
+          style="
+            width:100%;
+            height:100%;
+            border:none;
+            display:none;
+          "
+          allowfullscreen>
+  </iframe>
+
+</div>
 
       <!-- CONTROLES -->
       <div style="
@@ -937,67 +958,53 @@
 
 let currentSlide = 0;
 
-function renderSlide() {
+function renderSlide(){
 
-  const slideshow = document.getElementById('slideshow');
   const slide = slides[currentSlide];
+
+  const image =
+    document.getElementById('slide-image');
+
+  const video =
+    document.getElementById('slide-video');
 
   if(slide.type === 'image'){
 
-    slideshow.innerHTML = `
-      <img
-        src="${slide.src}"
-        style="
-          width:100%;
-          height:100%;
-          object-fit:contain;
-          display:block;
-        "
-      />
-    `;
+    image.style.display = 'block';
+    video.style.display = 'none';
 
-  } else if(slide.type === 'video'){
+    image.src = slide.src;
 
-    slideshow.innerHTML = `
-      <iframe
-        width="100%"
-        height="100%"
-        src="${slide.src}"
-        title="YouTube video player"
-        frameborder="0"
-        allow="
-          accelerometer;
-          autoplay;
-          clipboard-write;
-          encrypted-media;
-          gyroscope;
-          picture-in-picture;
-          web-share
-        "
-        allowfullscreen
-        style="
-          width:100%;
-          height:100%;
-          border:none;
-        ">
-      </iframe>
-    `;
+  }
+
+  else if(slide.type === 'video'){
+
+    image.style.display = 'none';
+    video.style.display = 'block';
+
+    video.src = slide.src;
 
   }
 
   document.getElementById('slide-counter').textContent =
     (currentSlide + 1) + ' / ' + slides.length;
+
 }
 
 function changeSlide(dir){
 
+  const video =
+    document.getElementById('slide-video');
+
+  video.src = '';
+
   currentSlide =
-    (currentSlide + dir + slides.length) % slides.length;
+    (currentSlide + dir + slides.length)
+    % slides.length;
 
   renderSlide();
-}
 
-renderSlide();
+}
 
 /* SWIPE MOBILE */
 
