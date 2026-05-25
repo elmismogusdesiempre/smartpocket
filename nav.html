@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Exploración Virtual</title>
+
+<style>
+
+html, body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:black;
+    cursor:grab;
+}
+
+#container{
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    position:relative;
+    background:black;
+}
+
+video{
+    position:absolute;
+
+    width:120vw;
+    height:100vh;
+
+    top:0;
+    left:-10vw;
+
+    object-fit:cover;
+
+    will-change:transform;
+
+    pointer-events:none;
+}
+
+#hud{
+    position:fixed;
+    top:20px;
+    left:20px;
+
+    color:white;
+    font-family:Arial;
+
+    background:rgba(0,0,0,0.5);
+
+    padding:12px;
+    border-radius:12px;
+
+    z-index:999;
+}
+
+</style>
+</head>
+<body>
+
+<div id="container">
+
+    <video
+        id="video"
+        src="explorar.mp4"
+        preload="auto"
+        muted
+        playsinline
+    ></video>
+
+</div>
+
+<div id="hud">
+    Scroll = avanzar<br>
+    Mouse = mirar lados
+</div>
+
+<script>
+
+const video = document.getElementById("video");
+
+let targetTime = 0;
+let smoothTime = 0;
+
+let targetLookX = 0;
+let smoothLookX = 0;
+
+const MAX_LOOK = 140;
+
+video.addEventListener("loadedmetadata", ()=>{
+
+    video.pause();
+
+    animate();
+
+});
+
+
+
+/* =========================
+   SCROLL = AVANZAR
+========================= */
+
+window.addEventListener("wheel", (e)=>{
+
+    targetTime += e.deltaY * 0.0015;
+
+    if(targetTime < 0){
+        targetTime = 0;
+    }
+
+    if(targetTime > video.duration){
+        targetTime = video.duration;
+    }
+
+});
+
+
+
+/* =========================
+   MOUSE = MIRAR LADOS
+========================= */
+
+window.addEventListener("mousemove", (e)=>{
+
+    const percent = e.clientX / window.innerWidth;
+
+    targetLookX = (percent - 0.5) * MAX_LOOK;
+
+});
+
+
+
+/* =========================
+   LOOP PRINCIPAL
+========================= */
+
+function animate(){
+
+    requestAnimationFrame(animate);
+
+
+
+    /* SUAVIZAR TIEMPO */
+
+    smoothTime += (targetTime - smoothTime) * 0.08;
+
+    if(Math.abs(video.currentTime - smoothTime) > 0.01){
+
+        video.currentTime = smoothTime;
+
+    }
+
+
+
+    /* SUAVIZAR MIRADA */
+
+    smoothLookX += (targetLookX - smoothLookX) * 0.08;
+
+
+
+    /* MOVER VIDEO */
+
+    video.style.transform =
+        `translateX(${smoothLookX}px) scale(1.05)`;
+
+
+}
+
+</script>
+
+</body>
+</html>
