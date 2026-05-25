@@ -775,33 +775,79 @@
   </section>
 
   <!-- SECCIÓN 7 -->
-  <div class="divider"></div>
-  <section id="presentacion">
-    <div class="section-inner">
-      <p class="section-label" id="sec07-label">07 · Presentation</p>
-      <h2 id="sec07-h2">Project Architecture</h2>
+ <div class="divider"></div>
 
-      <div style="position:relative; background:var(--card); border:1px solid var(--border); border-radius:28px; overflow:hidden; margin-top:40px;">
-        <div id="slideshow" style="position:relative; width:100%; aspect-ratio:16/9;">
-          <img id="slide-img" src="Smart_Pocket_Financial_Architecture.png" alt="Slide 1"
-               style="width:100%; height:100%; object-fit:contain; display:block;" />
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 24px; border-top:1px solid var(--border);">
-          <button onclick="changeSlide(-1)" id="btn-prev"
-                  style="background:var(--card); border:1px solid var(--border); color:var(--text); padding:8px 20px; border-radius:999px; cursor:pointer; font-family:var(--font-body); font-size:0.9rem; transition:all 0.2s;"
-                  onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            ← Previous
-          </button>
-          <span id="slide-counter" style="font-size:0.85rem; color:var(--muted);">1 / 12</span>
-          <button onclick="changeSlide(1)" id="btn-next"
-                  style="background:var(--card); border:1px solid var(--border); color:var(--text); padding:8px 20px; border-radius:999px; cursor:pointer; font-family:var(--font-body); font-size:0.9rem; transition:all 0.2s;"
-                  onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            Next →
-          </button>
-        </div>
+<section id="presentacion">
+  <div class="section-inner">
+
+    <p class="section-label" id="sec07-label">07 · Presentation</p>
+    <h2 id="sec07-h2">Project Architecture</h2>
+
+    <div style="
+      position:relative;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      margin-top:40px;
+    ">
+
+      <!-- SLIDESHOW -->
+      <div id="slideshow"
+           style="
+             position:relative;
+             width:100%;
+             aspect-ratio:16/9;
+             background:black;
+           ">
+      </div>
+
+      <!-- CONTROLES -->
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:16px 24px;
+        border-top:1px solid var(--border);
+      ">
+
+        <button onclick="changeSlide(-1)"
+                style="
+                  background:var(--card);
+                  border:1px solid var(--border);
+                  color:var(--text);
+                  padding:8px 20px;
+                  border-radius:999px;
+                  cursor:pointer;
+                  font-family:var(--font-body);
+                  font-size:0.9rem;
+                ">
+          ← Previous
+        </button>
+
+        <span id="slide-counter"
+              style="font-size:0.85rem; color:var(--muted);">
+          1 / 13
+        </span>
+
+        <button onclick="changeSlide(1)"
+                style="
+                  background:var(--card);
+                  border:1px solid var(--border);
+                  color:var(--text);
+                  padding:8px 20px;
+                  border-radius:999px;
+                  cursor:pointer;
+                  font-family:var(--font-body);
+                  font-size:0.9rem;
+                ">
+          Next →
+        </button>
+
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- FOOTER -->
   <footer>
@@ -819,32 +865,164 @@
 
   <script>
     // ---- SLIDESHOW ----
-    const slides = [
-      'Smart_Pocket_Financial_Architecture.png',
-      'Smart_Pocket_Financial_Architecture (1).png',
-      'Smart_Pocket_Financial_Architecture (2).png',
-      'Smart_Pocket_Financial_Architecture (3).png',
-      'Smart_Pocket_Financial_Architecture (4).png',
-      'Smart_Pocket_Financial_Architecture (5).png',
-      'Smart_Pocket_Financial_Architecture (6).png',
-      'Smart_Pocket_Financial_Architecture (7).png',
-      'Smart_Pocket_Financial_Architecture (8).png',
-      'Smart_Pocket_Financial_Architecture (9).png',
-      'Smart_Pocket_Financial_Architecture (10).png',
-      'Smart_Pocket_Financial_Architecture (11).png',
-    ];
-    let currentSlide = 0;
-    function changeSlide(dir) {
-      currentSlide = (currentSlide + dir + slides.length) % slides.length;
-      document.getElementById('slide-img').src = slides[currentSlide];
-      document.getElementById('slide-counter').textContent = (currentSlide + 1) + ' / ' + slides.length;
-    }
-    let touchStartX = 0;
-    document.getElementById('slideshow').addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
-    document.getElementById('slideshow').addEventListener('touchend', e => {
-      const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
-    });
+   const slides = [
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture.png'
+  },
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture (1).png'
+  },
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture (2).png'
+  },
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture (3).png'
+  },
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture (4).png'
+  },
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture (5).png'
+  },
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture (6).png'
+  },
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture (7).png'
+  },
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture (8).png'
+  },
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture (9).png'
+  },
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture (10).png'
+  },
+
+  {
+    type:'image',
+    src:'Smart_Pocket_Financial_Architecture (11).png'
+  },
+
+  /* VIDEO FINAL */
+  {
+    type:'video',
+    src:'https://www.youtube.com/embed/TU_VIDEO_ID'
+  }
+
+];
+
+let currentSlide = 0;
+
+function renderSlide() {
+
+  const slideshow = document.getElementById('slideshow');
+  const slide = slides[currentSlide];
+
+  if(slide.type === 'image'){
+
+    slideshow.innerHTML = `
+      <img
+        src="${slide.src}"
+        style="
+          width:100%;
+          height:100%;
+          object-fit:contain;
+          display:block;
+        "
+      />
+    `;
+
+  } else if(slide.type === 'video'){
+
+    slideshow.innerHTML = `
+      <iframe
+        width="100%"
+        height="100%"
+        src="${slide.src}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          web-share
+        "
+        allowfullscreen
+        style="
+          width:100%;
+          height:100%;
+          border:none;
+        ">
+      </iframe>
+    `;
+
+  }
+
+  document.getElementById('slide-counter').textContent =
+    (currentSlide + 1) + ' / ' + slides.length;
+}
+
+function changeSlide(dir){
+
+  currentSlide =
+    (currentSlide + dir + slides.length) % slides.length;
+
+  renderSlide();
+}
+
+renderSlide();
+
+/* SWIPE MOBILE */
+
+let touchStartX = 0;
+
+document.getElementById('slideshow')
+.addEventListener('touchstart', e => {
+
+  touchStartX = e.touches[0].clientX;
+
+});
+
+document.getElementById('slideshow')
+.addEventListener('touchend', e => {
+
+  const diff =
+    touchStartX - e.changedTouches[0].clientX;
+
+  if(Math.abs(diff) > 50){
+
+    changeSlide(diff > 0 ? 1 : -1);
+
+  }
+
+});
 
     // ---- MOBILE MENU ----
     function openMenu()  { document.getElementById('mobileMenu').classList.add('open'); }
